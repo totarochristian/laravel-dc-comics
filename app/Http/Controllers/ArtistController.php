@@ -55,11 +55,10 @@ class ArtistController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
      */
     public function edit(Artist $artist)
     {
-        //
+        return view('artists.edit', compact('artist'));
     }
 
     /**
@@ -71,17 +70,19 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        //
+        $form_data = $request->all();
+        $artist->update($form_data);
+        return redirect()->route('artists.show', $artist->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Artist $artist)
     {
-        //
+        $artist->delete();
+        return redirect()->route('artists.index')->with('message', "Artist with id: {$artist->id} cancellato con successo !");
     }
 }

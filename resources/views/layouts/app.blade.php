@@ -21,6 +21,8 @@
         @yield('content')
     </main>
     @include('partials.footer')
+
+    @include('partials.popup');
 </body>
 
 </html>
