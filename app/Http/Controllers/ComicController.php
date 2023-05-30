@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use App\Models\ComicArtist;
+use App\Models\ComicWriter;
+use App\Models\Artist;
+use App\Models\Writer;
 
 class ComicController extends Controller
 {
@@ -46,7 +50,20 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        return view('comics.show', compact('comic'));
+        //Gets the artists related to this comic
+        $artistsId = ComicArtist::all()->where('id_comic', $comic->id);
+        $artists = [];
+        foreach($artistsId as $el)
+            $artists[] = Artist::find($el->id_artist);
+
+        //Gets the writers related to this comic
+        $writersId = ComicWriter::all()->where('id_comic', $comic->id);
+        $writers = [];
+        foreach($writersId as $el)
+            $writers[] = Writer::find($el->id_writer);
+
+        //Returns the view showing the detail about the comic passing artists and writers related
+        return view('comics.show', compact('comic','artists','writers'));
     }
 
     /**
