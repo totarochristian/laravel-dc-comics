@@ -9,22 +9,19 @@ class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $comics = Comic::all();
+        return view("comics.index", compact('comics'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('comics.create');
     }
 
     /**
@@ -35,18 +32,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $newComic = new Comic();
+        $newComic->fill($form_data);
+        $newComic->save();
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
      */
     public function show(Comic $comic)
     {
-        //
+        return view('comics.show', compact('comic'));
     }
 
     /**

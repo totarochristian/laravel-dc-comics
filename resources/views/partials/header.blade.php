@@ -13,6 +13,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ Route::currentRouteName() == 'comics.index' ? 'active' : '' }}"
+                        href="{{ route('comics.index') }}">
+                        Fumetti
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ Route::currentRouteName() == 'artists.index' ? 'active' : '' }}"
                         href="{{ route('artists.index') }}">
                         Artisti
