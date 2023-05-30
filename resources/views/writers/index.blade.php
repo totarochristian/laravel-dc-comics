@@ -9,7 +9,7 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        <div class="row gy-4">
+        <div class="showGroup row gy-4">
             @foreach ($writers as $writer)
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="card">

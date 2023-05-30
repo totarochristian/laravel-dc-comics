@@ -13,19 +13,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'comics.index' ? 'active' : '' }}"
+                    <a class="nav-link {{ str_contains(Route::currentRouteName(),'comics') ? 'active' : '' }}"
                         href="{{ route('comics.index') }}">
                         Fumetti
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'artists.index' ? 'active' : '' }}"
+                    <a class="nav-link {{ str_contains(Route::currentRouteName(),'artists') ? 'active' : '' }}"
                         href="{{ route('artists.index') }}">
                         Artisti
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() == 'writers.index' ? 'active' : '' }}"
+                    <a class="nav-link {{ str_contains(Route::currentRouteName(),'writers') ? 'active' : '' }}"
                         href="{{ route('writers.index') }}">
                         Scrittori
                     </a>

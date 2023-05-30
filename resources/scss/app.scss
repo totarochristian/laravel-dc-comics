@@ -8,3 +8,27 @@ $fa-font-path: "../fonts/webfonts" !default;
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 @import '~bootstrap/scss/bootstrap';
+
+body {
+    // background-image: url('../img/page_bg.jpg');
+    // background-size: cover;
+    font-family: sans-serif;
+}
+header {
+    a.active {
+        font-weight: bold;
+    }
+}
+
+.showGroup {
+    img {
+        max-height: 210px;
+        object-fit: cover;
+    }
+}
+.showDetailGroup {
+    img {
+        max-width: 30vw;
+        object-fit: cover;
+    }
+}

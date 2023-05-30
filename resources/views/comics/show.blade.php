@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="container">
+    <section class="container showDetailGroup">
         <h1>{{ $comic->title }}</h1>
         <div class="card">
             <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title }}">

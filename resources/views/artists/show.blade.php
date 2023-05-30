@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="container">
+    <section class="container showDetailGroup">
         <h1>Codice artista: {{ $artist->id }}</h1>
         <div class="card">
             <div class="card-body">
