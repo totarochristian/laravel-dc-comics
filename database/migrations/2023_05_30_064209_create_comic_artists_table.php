@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('id_comic')->references('id')->on('comics');
             $table->foreignId('id_artist')->references('id')->on('artists');
             $table->primary(['id_comic','id_artist']);
+            $table->timestamps();
         });
     }
 
