@@ -13,10 +13,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    {{-- <a class="nav-link {{ Route::currentRouteName() == 'products.index' ? 'active' : '' }}"
-                        href="{{ route('products.index') }}">
-                        Prodotti
-                    </a> --}}
+                    <a class="nav-link {{ Route::currentRouteName() == 'artists.index' ? 'active' : '' }}"
+                        href="{{ route('artists.index') }}">
+                        Artisti
+                    </a>
                 </li>
                 <li class="nav-item">
                     {{-- <a class="nav-link {{ Route::currentRouteName() == 'recipes.index' ? 'active' : '' }}"
