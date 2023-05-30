@@ -21,7 +21,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-button btn btn-danger ms-3"
-                                    data-item-title="{{ $writer->title }}">Cancella</button>
+                                    data-item-title="{{ $writer->surname." ".$writer->name }}">Cancella</button>
                             </form>
                         </div>
                     </div>

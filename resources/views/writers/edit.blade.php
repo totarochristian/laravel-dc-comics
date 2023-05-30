@@ -16,7 +16,7 @@
                 <input type="text" class="form-control" name="surname" id="surname" aria-describedby="surnameHelp" value="{{ $writer->surname }}">
                 <div id="surnameHelp" class="form-text">Inserisci il cognome dello scrittore</div>
             </div>
-            <button type="submit" class="btn btn-primary">Inserisci</button>
+            <button type="submit" class="btn btn-primary">Modifica</button>
             <button type="reset" class="btn btn-primary">Cancella</button>
         </form>
     </section>
