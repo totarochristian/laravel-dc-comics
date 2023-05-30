@@ -10,21 +10,20 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $artists = Artist::all();
+        return view("artists.index", compact('artists'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('artists.create');
     }
 
     /**
@@ -35,18 +34,21 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $newArtist = new Artist();
+        $newArtist->fill($form_data);
+        $newArtist->save();
+        return redirect()->route('artists.show', $newArtist->id);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Artist  $artist
-     * @return \Illuminate\Http\Response
      */
     public function show(Artist $artist)
     {
-        //
+        return view('artists.show', compact('artist'));
     }
 
     /**
