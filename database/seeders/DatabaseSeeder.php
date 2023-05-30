@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             $comic->title = $elem["title"];
             $comic->description = $elem["description"];
             $comic->thumb = $elem["thumb"];
-            $comic->price = doubleval($elem["price"]);
+            $comic->price = (double)(str_replace("$","",$elem["price"]));
             $comic->series = $elem["series"];
             $comic->sale_date = date($elem["sale_date"]);
             $comic->type = $elem["type"];
