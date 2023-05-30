@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Comic;
 use App\Models\Artist;
 use App\Models\ComicArtist;
+use App\Models\Writer;
+use App\Models\ComicWriter;
 
 class DatabaseSeeder extends Seeder
 {
@@ -43,6 +45,17 @@ class DatabaseSeeder extends Seeder
                 $comicArtist->save();
             }
 
+            foreach($elem["writers"] as $wri){
+                $writer = new Writer();
+                $writer->name = substr($wri,0,strrpos($wri," ",-1));
+                $writer->surname = substr($wri,strrpos($wri," ",-1));
+                $writer->save();
+
+                $comicWriter = new ComicWriter();
+                $comicWriter->id_comic = $comic->id;
+                $comicWriter->id_writer = $writer->id;
+                $comicWriter->save();
+            }
         }
     }
 }
