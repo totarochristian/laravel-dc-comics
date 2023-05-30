@@ -19,16 +19,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    {{-- <a class="nav-link {{ Route::currentRouteName() == 'recipes.index' ? 'active' : '' }}"
-                        href="{{ route('recipes.index') }}">
-                        Ricette
-                    </a> --}}
-                </li>
-                <li class="nav-item">
-                    {{-- <a class="nav-link {{ Route::currentRouteName() == 'products.create' ? 'active' : '' }}"
-                        href="{{ route('products.create') }}">
-                        Inserisci prodotto
-                    </a> --}}
+                    <a class="nav-link {{ Route::currentRouteName() == 'writers.index' ? 'active' : '' }}"
+                        href="{{ route('writers.index') }}">
+                        Scrittori
+                    </a>
                 </li>
             </ul>
         </nav>

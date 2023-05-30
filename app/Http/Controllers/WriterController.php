@@ -10,21 +10,20 @@ class WriterController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $writers = Writer::all();
+        return view("writers.index", compact('writers'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('writers.create');
     }
 
     /**
@@ -35,18 +34,21 @@ class WriterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $newWriter = new Writer();
+        $newWriter->fill($form_data);
+        $newWriter->save();
+        return redirect()->route('writers.show', $newWriter->id);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Writer  $writer
-     * @return \Illuminate\Http\Response
      */
     public function show(Writer $writer)
     {
-        //
+        return view('writers.show', compact('writer'));
     }
 
     /**
