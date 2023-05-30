@@ -83,6 +83,6 @@ class ArtistController extends Controller
     public function destroy(Artist $artist)
     {
         $artist->delete();
-        return redirect()->route('artists.index')->with('message', "Artist with id: {$artist->id} cancellato con successo !");
+        return redirect()->route('artists.index')->with('message', "Artista con id {$artist->id} cancellato con successo!");
     }
 }

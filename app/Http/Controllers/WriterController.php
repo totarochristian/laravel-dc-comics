@@ -55,11 +55,10 @@ class WriterController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Writer  $writer
-     * @return \Illuminate\Http\Response
      */
     public function edit(Writer $writer)
     {
-        //
+        return view('writers.edit', compact('writer'));
     }
 
     /**
@@ -71,17 +70,19 @@ class WriterController extends Controller
      */
     public function update(Request $request, Writer $writer)
     {
-        //
+        $form_data = $request->all();
+        $writer->update($form_data);
+        return redirect()->route('writers.show', $writer->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Writer  $writer
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Writer $writer)
     {
-        //
+        $writer->delete();
+        return redirect()->route('writers.index')->with('message', "Scrittore con id {$writer->id} cancellato con successo!");
     }
 }
