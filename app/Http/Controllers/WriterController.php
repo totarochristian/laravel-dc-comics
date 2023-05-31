@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Writer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class WriterController extends Controller
 {
@@ -34,11 +35,7 @@ class WriterController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:120',
-            'surname' => 'required|min:3|max:120',
-        ]);
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $newWriter = new Writer();
         $newWriter->fill($form_data);
         $newWriter->save();
@@ -74,11 +71,7 @@ class WriterController extends Controller
      */
     public function update(Request $request, Writer $writer)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:120',
-            'surname' => 'required|min:3|max:120',
-        ]);
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $writer->update($form_data);
         return redirect()->route('writers.show', $writer->id);
     }
@@ -92,5 +85,26 @@ class WriterController extends Controller
     {
         $writer->delete();
         return redirect()->route('writers.index')->with('message', "Scrittore con id {$writer->id} cancellato con successo!");
+    }
+
+    /**
+     * Validate the data passed.
+     *
+     * @param mixed $data Data to be validated.
+     * @return array Array of data validated.
+     */
+    private function validation($data){
+        $validator = Validator::make($data, [
+            'name' => 'required|min:3|max:120',
+            'surname' => 'required|min:3|max:120',
+        ],[
+            'name.required' => 'Il nome è obbligatorio!',
+            'name.min' => 'Il nome deve essere composto almeno da 3 caratteri!',
+            'name.max' => 'Il nome non deve superare i 120 caratteri!',
+            'surname.required' => 'Il cognome è obbligatorio!',
+            'surname.min' => 'Il cognome deve essere composto almeno da 3 caratteri!',
+            'surname.max' => 'Il cognome non deve superare i 120 caratteri!',
+        ])->validate();
+        return $validator;
     }
 }
