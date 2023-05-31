@@ -20,15 +20,9 @@ header {
     }
 }
 
-.showGroup {
+.showGroup, .showDetailGroup {
     img {
         height: 500px;
-        object-fit: cover;
-    }
-}
-.showDetailGroup {
-    img {
-        max-width: 30vw;
         object-fit: cover;
     }
 }
