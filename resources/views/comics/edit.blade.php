@@ -13,9 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea name="description" id="description" cols="30" rows="10">
-                    {{ $comic->description }}
-                </textarea>
+                <textarea name="description" id="description" cols="30" rows="10">{{ $comic->description }}</textarea>
             <div class="mb-3">
                 <label for="thumb" class="form-label">Immagine thumb</label>
                 <input type="text" class="form-control" name="thumb" id="thumb" aria-describedby="thumbHelp" value="{{ $comic->thumb }}">
