@@ -97,6 +97,13 @@ class ArtistController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|min:3|max:120',
             'surname' => 'required|min:3|max:120',
+        ],[
+            'name.required' => 'Il nome è obbligatorio!',
+            'name.min' => 'Il nome deve essere composto almeno da 3 caratteri!',
+            'name.max' => 'Il nome non deve superare i 120 caratteri!',
+            'surname.required' => 'Il cognome è obbligatorio!',
+            'surname.min' => 'Il cognome deve essere composto almeno da 3 caratteri!',
+            'surname.max' => 'Il cognome non deve superare i 120 caratteri!',
         ])->validate();
         return $validator;
     }
