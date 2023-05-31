@@ -34,6 +34,10 @@ class WriterController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:120',
+            'surname' => 'required|min:3|max:120',
+        ]);
         $form_data = $request->all();
         $newWriter = new Writer();
         $newWriter->fill($form_data);
