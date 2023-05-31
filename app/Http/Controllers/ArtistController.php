@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ArtistController extends Controller
 {
@@ -34,11 +35,7 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:120',
-            'surname' => 'required|min:3|max:120',
-        ]);
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $newArtist = new Artist();
         $newArtist->fill($form_data);
         $newArtist->save();
@@ -74,11 +71,7 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:120',
-            'surname' => 'required|min:3|max:120',
-        ]);
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
         $artist->update($form_data);
         return redirect()->route('artists.show', $artist->id);
     }
@@ -92,5 +85,19 @@ class ArtistController extends Controller
     {
         $artist->delete();
         return redirect()->route('artists.index')->with('message', "Artista con id {$artist->id} cancellato con successo!");
+    }
+
+    /**
+     * Validate the data passed.
+     *
+     * @param mixed $data Data to be validated.
+     * @return array Array of data validated.
+     */
+    private function validation($data){
+        $validator = Validator::make($data, [
+            'name' => 'required|min:3|max:120',
+            'surname' => 'required|min:3|max:120',
+        ])->validate();
+        return $validator;
     }
 }
