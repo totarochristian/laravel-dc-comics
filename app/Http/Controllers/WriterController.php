@@ -74,6 +74,10 @@ class WriterController extends Controller
      */
     public function update(Request $request, Writer $writer)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:120',
+            'surname' => 'required|min:3|max:120',
+        ]);
         $form_data = $request->all();
         $writer->update($form_data);
         return redirect()->route('writers.show', $writer->id);
