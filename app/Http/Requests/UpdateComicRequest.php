@@ -34,6 +34,11 @@ class UpdateComicRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the messages to use in case of errors
+     *
+     * @return array<string, mixed>
+     */
     public function messages(){
         return [
             'title.required' => 'Il titolo è obbligatorio!',
