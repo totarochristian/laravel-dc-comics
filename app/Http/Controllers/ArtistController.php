@@ -74,6 +74,10 @@ class ArtistController extends Controller
      */
     public function update(Request $request, Artist $artist)
     {
+        $request->validate([
+            'name' => 'required|min:3|max:120',
+            'surname' => 'required|min:3|max:120',
+        ]);
         $form_data = $request->all();
         $artist->update($form_data);
         return redirect()->route('artists.show', $artist->id);
